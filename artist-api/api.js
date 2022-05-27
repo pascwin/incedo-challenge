@@ -32,10 +32,23 @@ app.use(cors())
 dotenv.config()
 
 app.get('/', (req, res) => {
-    const API_KEY = process.env.AUDIO_SCRABLER_API_KEY
-    fetch(`http://ws.audioscrobbler.com/2.0/?method=artist.search&artist=cher&api_key=${API_KEY}&format=json`)
+    const AUDIO_SCRABLER_API_KEY = process.env.AUDIO_SCRABLER_API_KEY
+    fetch(`http://ws.audioscrobbler.com/2.0/?method=artist.search&artist=cher&api_key=${AUDIO_SCRABLER_API_KEY}&format=json`)
         .then(response => response.json())
         .then(data => res.send(data))
+})
+
+app.post('/artists', (req, res) => {
+    const {search} = req.body;
+    console.log(search)
+    if (search) {
+        const AUDIO_SCRABLER_API_KEY = process.env.AUDIO_SCRABLER_API_KEY
+        fetch(`http://ws.audioscrobbler.com/2.0/?method=artist.search&artist=${search}&api_key=${AUDIO_SCRABLER_API_KEY}&format=json`)
+        .then(response => response.json())
+        .then(data => res.send(data))
+    } else {
+        res.send([])
+    }
 })
 
 app.listen(3000, () => {
