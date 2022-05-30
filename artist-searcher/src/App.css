@@ -9,6 +9,11 @@
 
 .search-container {
   margin-left: 20px;
+  margin-bottom: 0px;
+}
+
+.export-link {
+  margin-left: 20px;
   margin-bottom: 20px;
 }
 
@@ -24,4 +29,9 @@ display: table-cell;
 text-align: center;
 vertical-align: middle;
 word-wrap: break-word;
+}
+
+.empty-state {
+  padding: 100px;
+  text-align: center;
 }
