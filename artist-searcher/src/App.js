@@ -36,7 +36,6 @@ function App() {
         .then(res => res.json())
         .then(data => {
           setArtists(data.results.artistmatches.artist)
-          console.log(artists)
         })
         .catch((err) => {
           console.error(err)
